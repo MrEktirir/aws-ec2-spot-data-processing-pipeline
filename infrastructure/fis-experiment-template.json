@@ -1,0 +1,32 @@
+{
+  "description": "Controlled interruption of an EC2 Spot data processing worker",
+  "targets": {
+    "SpotWorker": {
+      "resourceType": "aws:ec2:spot-instance",
+      "resourceArns": [
+        "arn:aws:ec2:<REGION>:<ACCOUNT_ID>:instance/<SPOT_INSTANCE_ID>"
+      ],
+      "selectionMode": "ALL"
+    }
+  },
+  "actions": {
+    "InterruptSpotWorker": {
+      "actionId": "aws:ec2:send-spot-instance-interruptions",
+      "parameters": {
+        "durationBeforeInterruption": "PT2M"
+      },
+      "targets": {
+        "SpotInstances": "SpotWorker"
+      }
+    }
+  },
+  "stopConditions": [
+    {
+      "source": "none"
+    }
+  ],
+  "roleArn": "arn:aws:iam::<ACCOUNT_ID>:role/<FIS_ROLE_NAME>",
+  "tags": {
+    "Project": "EC2 Spot Data Processing Pipeline"
+  }
+}

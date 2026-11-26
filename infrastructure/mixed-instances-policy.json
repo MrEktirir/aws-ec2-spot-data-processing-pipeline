@@ -1,0 +1,28 @@
+{
+  "LaunchTemplate": {
+    "LaunchTemplateSpecification": {
+      "LaunchTemplateId": "<LAUNCH_TEMPLATE_ID>",
+      "Version": "$Default"
+    },
+    "Overrides": [
+      {
+        "InstanceType": "t3.micro"
+      },
+      {
+        "InstanceType": "t3a.micro"
+      },
+      {
+        "InstanceType": "t3.small"
+      },
+      {
+        "InstanceType": "t3a.small"
+      }
+    ]
+  },
+  "InstancesDistribution": {
+    "OnDemandAllocationStrategy": "prioritized",
+    "OnDemandBaseCapacity": 1,
+    "OnDemandPercentageAboveBaseCapacity": 0,
+    "SpotAllocationStrategy": "price-capacity-optimized"
+  }
+}

@@ -1,0 +1,21 @@
+[Unit]
+Description=EC2 Spot Data Processing Worker
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/spot-data-pipeline/app
+
+Environment=AWS_REGION=eu-central-1
+Environment=QUEUE_URL=<SQS_QUEUE_URL>
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/opt/spot-data-pipeline/venv/bin/python /opt/spot-data-pipeline/app/src/worker.py
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

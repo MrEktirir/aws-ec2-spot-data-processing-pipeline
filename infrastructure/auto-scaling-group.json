@@ -1,0 +1,9 @@
+{
+  "AutoScalingGroupName": "ec2-spot-data-pipeline-asg",
+  "MinSize": 1,
+  "DesiredCapacity": 3,
+  "MaxSize": 3,
+  "CapacityRebalance": true,
+  "VPCZoneIdentifier": "<SUBNET_1>,<SUBNET_2>,<SUBNET_3>",
+  "HealthCheckType": "EC2"
+}
